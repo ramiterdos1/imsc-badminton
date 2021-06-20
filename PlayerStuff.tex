@@ -1,0 +1,38 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphs.standard,quotes}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\begin{document}
+
+
+\begin{tikzpicture}[mystyle/.style={draw,shape=circle, minimum size = 3cm }]
+\def\ngon{5}
+\graph[nodes={draw, circle, minimum size = 3cm }, n=5, clockwise, radius=9cm]
+  {
+    1/"SP", 2/"SS", 3/"BS", 4/"LOS", 5/"CDI"
+  };
+    
+\begin{scope}[very thick,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow{>}}}
+    ]     
+ \draw (2) edge [ -> ,  ] (1) ;
+ \draw (3) edge [ -> ] (1) ;
+  \draw (4) edge [ -> ] (1) ;
+   \draw (5) edge [ -> ] (1) ;
+    \draw (3) edge [ -> ] (5) ;
+     \draw (4) edge [ -> ] (5) ;
+      \draw (2) edge [ -> ] (5) ;
+ \draw (3) edge [ -> ] (4) ;
+  \draw (2) edge [ -> ] (3) ;
+   \draw (4) edge [ -> ] (2) ;
+    
+\end{scope}   
+   
+\end{tikzpicture}
+\end{document}
